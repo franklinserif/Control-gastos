@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 /** It will contain and provide the Budget context
  * for all the components that need it
@@ -17,6 +18,10 @@ const BudgetProvider = ({ children }) => {
       {children}
     </BudgetContext.Provider>
   );
+};
+
+BudgetProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default BudgetProvider;
