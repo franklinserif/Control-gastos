@@ -22,6 +22,15 @@ const NewBudget = () => {
             className="nuevo-presupuesto"
             type="text"
             placeholder="Añade tu presupuesto"
+            /**
+             * Set input value with the budget state value
+             */
+            value={budget}
+            /**
+             * Set the Budget value with the input value
+             * everytime the user type something
+             */
+            onchange={(event) => setBudget(event.target.value)}
           />
         </div>
 
