@@ -13,7 +13,20 @@ const NewBudget = () => {
    */
   const { budget, setBudget } = useContext(BudgetContext);
 
-  const handleBudget = () => {};
+  /**
+   * It will handle the submit event for NewBudget form
+   * and validate if the number is right
+   * @param {event} event
+   */
+  const handleBudget = (event) => {
+    // It prevent default behavior
+    event.preventDefault();
+
+    //validate if then number isn't positive
+    if (!Number(budget) || Number(budget) < 0) {
+      return null;
+    }
+  };
 
   return (
     <div className="contenedor-presupuesto contenedor sombra">
@@ -36,7 +49,7 @@ const NewBudget = () => {
           />
         </div>
 
-        <input type="submit" value="Añadir" />
+        <input type="submit" value="Añadir" onClick={handleBudget} />
       </form>
     </div>
   );
