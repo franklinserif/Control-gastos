@@ -1,5 +1,5 @@
 import Header from './components/Header';
-
+import NewBudget from './components/NewBudget';
 /**
  * Componente App, here will
  * be all the app structure
@@ -9,6 +9,7 @@ function App() {
   return (
     <div>
       <Header />
+      <NewBudget />
     </div>
   );
 }
