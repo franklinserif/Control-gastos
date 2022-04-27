@@ -13,6 +13,8 @@ const NewBudget = () => {
    */
   const { budget, setBudget } = useContext(BudgetContext);
 
+  const handleBudget = () => {};
+
   return (
     <div className="contenedor-presupuesto contenedor sombra">
       <form className="formulario">
@@ -30,7 +32,7 @@ const NewBudget = () => {
              * Set the Budget value with the input value
              * everytime the user type something
              */
-            onchange={(event) => setBudget(event.target.value)}
+            onChange={(event) => setBudget(event.target.value)}
           />
         </div>
 
