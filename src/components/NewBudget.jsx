@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { BudgetContext } from '../context/BudgetProvider';
+import Message from './Message';
 
 /**
  * New Buget component
@@ -54,6 +55,9 @@ const NewBudget = () => {
         </div>
 
         <input type="submit" value="Añadir" onClick={handleBudget} />
+
+        {/** It will render only if message state is not null or undefined */}
+        {message && <Message type="error">{message}</Message>}
       </form>
     </div>
   );
