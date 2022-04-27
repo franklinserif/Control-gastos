@@ -1,5 +1,5 @@
 /**
- * Componente Header
+ * Components Header
  * @returns {JSX.Element} <Header/>
  */
 const Header = () => {

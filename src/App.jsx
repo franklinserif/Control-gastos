@@ -1,8 +1,8 @@
 import Header from './components/Header';
 
 /**
- * Componente App, donde estara toda
- * la estructura de la app
+ * Componente App, here will
+ * be all the app structure
  * @returns {JSX.Element} <App/>
  */
 function App() {
