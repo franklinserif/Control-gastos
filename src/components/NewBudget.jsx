@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { BudgetContext } from '../context/BudgetProvider';
 
 /**
@@ -13,6 +13,9 @@ const NewBudget = () => {
    */
   const { budget, setBudget } = useContext(BudgetContext);
 
+  // Message State, to show to the user
+  const [message, setMessage] = useState('');
+
   /**
    * It will handle the submit event for NewBudget form
    * and validate if the number is right
@@ -24,6 +27,7 @@ const NewBudget = () => {
 
     //validate if then number isn't positive
     if (!Number(budget) || Number(budget) < 0) {
+      setMessage('No es un presupuesto valido');
       return null;
     }
   };
