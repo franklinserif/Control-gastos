@@ -355,6 +355,7 @@ main {
   height: 3rem;
   border: none;
   background: none;
+  cursor: pointer;
 }
 
 .modal .cerrar-modal img {

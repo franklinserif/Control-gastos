@@ -33,7 +33,7 @@ function App() {
         </button>
       )}
 
-      {isModalOpen && <Modal />}
+      {isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}
     </div>
   );
 }
