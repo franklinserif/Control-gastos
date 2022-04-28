@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { BudgetContext } from './context/BudgetProvider';
 import IconNewExpense from './assets/img/nuevo-gasto.svg';
 import Header from './components/Header';
+import Modal from './components/Modal';
 
 /**
  * Componente App, here will
@@ -32,7 +33,7 @@ function App() {
         </div>
       )}
 
-      {isModalOpen && <p>Esto es un modal</p>}
+      {isModalOpen && <Modal />}
     </div>
   );
 }
