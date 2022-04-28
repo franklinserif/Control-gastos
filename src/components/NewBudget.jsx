@@ -50,7 +50,7 @@ const NewBudget = () => {
              * Set the Budget value with the input value
              * everytime the user type something
              */
-            onChange={(event) => setBudget(event.target.value)}
+            onChange={(event) => setBudget(Number(event.target.value))}
           />
         </div>
 
