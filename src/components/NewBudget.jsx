@@ -9,10 +9,11 @@ import Message from './Message';
 const NewBudget = () => {
   /**
    * Get the budget state value and set Function
-   * to handle the global budget state from
-   * BudgetContext provide by BudgetProvider component
+   * to handle the global budget and the setIsValidBudget
+   * to change between components BudgetContext provide
+   * by BudgetProvider component
    */
-  const { budget, setBudget } = useContext(BudgetContext);
+  const { budget, setBudget, setIsValidBudget } = useContext(BudgetContext);
 
   // Message State, to show to the user
   const [message, setMessage] = useState('');
@@ -31,6 +32,8 @@ const NewBudget = () => {
       setMessage('No es un presupuesto valido');
       return null;
     }
+
+    setIsValidBudget(true);
   };
 
   return (

@@ -13,8 +13,11 @@ export const BudgetContext = createContext();
  */
 const BudgetProvider = ({ children }) => {
   const [budget, setBudget] = useState(0);
+  const [isBudgetValid, setIsBudgetValid] = useState(false);
   return (
-    <BudgetContext.Provider value={{ budget, setBudget }}>
+    <BudgetContext.Provider
+      value={{ budget, setBudget, isBudgetValid, setIsBudgetValid }}
+    >
       {children}
     </BudgetContext.Provider>
   );
