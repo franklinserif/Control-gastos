@@ -40,7 +40,7 @@ const NewBudget = () => {
           <label htmlFor="presupuesto">Definir Presupuesto</label>
           <input
             className="nuevo-presupuesto"
-            type="text"
+            type="number"
             placeholder="Añade tu presupuesto"
             /**
              * Set input value with the budget state value
