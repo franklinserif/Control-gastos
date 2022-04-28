@@ -7,7 +7,7 @@ import NewBudget from './NewBudget';
  * @returns {JSX.Element} <Header/>
  */
 const Header = () => {
-  const { isValidBudget } = useContext(BudgetContext);
+  const { isBudgetValid } = useContext(BudgetContext);
 
   return (
     <header>
@@ -15,7 +15,7 @@ const Header = () => {
 
       {/** If the the budget is correct, isValid will be true and will render <p></p>
        * it is not, will render <NewBudget component **/}
-      {isValidBudget ? <p>Control de presupuesto</p> : <NewBudget />}
+      {isBudgetValid ? <p>Control de presupuesto</p> : <NewBudget />}
     </header>
   );
 };
