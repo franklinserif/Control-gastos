@@ -13,7 +13,7 @@ const NewBudget = () => {
    * to change between components BudgetContext provide
    * by BudgetProvider component
    */
-  const { budget, setBudget, setIsValidBudget } = useContext(BudgetContext);
+  const { budget, setBudget, setIsBudgetValid } = useContext(BudgetContext);
 
   // Message State, to show to the user
   const [message, setMessage] = useState('');
@@ -29,11 +29,12 @@ const NewBudget = () => {
 
     //validate if then number isn't positive
     if (budget || budget < 0) {
+      console.log(budget);
       setMessage('No es un presupuesto valido');
       return null;
     }
 
-    setIsValidBudget(true);
+    setIsBudgetValid(true);
   };
 
   return (
