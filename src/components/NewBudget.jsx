@@ -28,7 +28,7 @@ const NewBudget = () => {
     event.preventDefault();
 
     //validate if then number isn't positive
-    if (budget || budget < 0) {
+    if (budget || budget <= 0) {
       console.log(budget);
       setMessage('No es un presupuesto valido');
       return null;
