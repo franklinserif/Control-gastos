@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { BudgetContext } from './context/BudgetProvider';
 import IconNewExpense from './assets/img/nuevo-gasto.svg';
 import Header from './components/Header';
@@ -10,6 +10,14 @@ import Header from './components/Header';
  */
 function App() {
   const { isBudgetValid } = useContext(BudgetContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  /**
+   * it will handle the modal window
+   */
+  const handleNewExpense = () => {
+    setIsModalOpen((prevState) => !prevState);
+  };
 
   return (
     <div>
@@ -19,7 +27,7 @@ function App() {
        * and React will render div.nuevo-gastos element
        */}
       {isBudgetValid && (
-        <div className="nuevo-gasto">
+        <div className="nuevo-gasto" onClick={handleNewExpense}>
           <img src={IconNewExpense} alt="Icono nuevo gasto" />
         </div>
       )}
