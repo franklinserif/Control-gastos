@@ -28,9 +28,9 @@ function App() {
        * and React will render div.nuevo-gastos element
        */}
       {isBudgetValid && (
-        <div className="nuevo-gasto" onClick={handleNewExpense}>
+        <button className="nuevo-gasto" onClick={handleNewExpense}>
           <img src={IconNewExpense} alt="Icono nuevo gasto" />
-        </div>
+        </button>
       )}
 
       {isModalOpen && <Modal />}
