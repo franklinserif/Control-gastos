@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { BudgetContext } from '../context/BudgetProvider';
 import NewBudget from './NewBudget';
+import BudgetControl from './BudgetControl';
 
 /**
  * Components Header
  * @returns {JSX.Element} <Header/>
  */
 const Header = () => {
-  const { isBudgetValid } = useContext(BudgetContext);
+  const { isBudgetValid, budget } = useContext(BudgetContext);
 
   return (
     <header>
@@ -15,7 +16,7 @@ const Header = () => {
 
       {/** If the the budget is correct, isValid will be true and will render <p></p>
        * it is not, will render <NewBudget component **/}
-      {isBudgetValid ? <p>Control de presupuesto</p> : <NewBudget />}
+      {isBudgetValid ? <BudgetControl /> : <NewBudget />}
     </header>
   );
 };
