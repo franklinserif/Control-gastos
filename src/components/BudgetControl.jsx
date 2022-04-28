@@ -25,6 +25,12 @@ const BudgetControl = () => {
         <p>
           <span>Presupuesto: </span> {formatBudget(budget)}
         </p>
+        <p>
+          <span>Disponible: </span> {formatBudget(0)}
+        </p>
+        <p>
+          <span>Gastado: </span> {formatBudget(0)}
+        </p>
       </div>
     </div>
   );
