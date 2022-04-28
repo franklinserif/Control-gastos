@@ -31,6 +31,8 @@ function App() {
           <img src={IconNewExpense} alt="Icono nuevo gasto" />
         </div>
       )}
+
+      {isModalOpen && <p>Esto es un modal</p>}
     </div>
   );
 }
