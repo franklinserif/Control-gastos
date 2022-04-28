@@ -1,6 +1,11 @@
+import PropTypes from 'prop-types';
 import IconCloseModal from '../assets/img/cerrar.svg';
 
-const Modal = () => {
+/**
+ * Modal Window component
+ * @returns {JSX.Element} <Modal></Modal>
+ */
+const Modal = ({ close }) => {
   return (
     <div className="modal">
       <button className="cerrar-modal">
@@ -8,6 +13,10 @@ const Modal = () => {
       </button>
     </div>
   );
+};
+
+Modal.propTypes = {
+  close: PropTypes.func.isRequired,
 };
 
 export default Modal;
