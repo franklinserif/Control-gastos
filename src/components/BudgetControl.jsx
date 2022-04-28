@@ -9,6 +9,13 @@ import { BudgetContext } from '../context/BudgetProvider';
 const BudgetControl = () => {
   const { budget } = useContext(BudgetContext);
 
+  const formatBudget = (budget) => {
+    return budget.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+  };
+
   return (
     <div className="contenedor-presupuesto contenedor sombra dos-columnas">
       <div>
@@ -16,7 +23,7 @@ const BudgetControl = () => {
       </div>
       <div className="contenido-presupuesto">
         <p>
-          <span>Presupuesto: </span> ${budget}
+          <span>Presupuesto: </span> {formatBudget(budget)}
         </p>
       </div>
     </div>
