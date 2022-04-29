@@ -1,5 +1,7 @@
 import { useContext, useState } from 'react';
 import { BudgetContext } from './context/BudgetProvider';
+import { ExpensesContext } from './context/ExpensesProvider';
+import getRandomId from './Helpers/getRandomId';
 import IconNewExpense from './assets/img/nuevo-gasto.svg';
 import Header from './components/Header';
 import Modal from './components/Modal';
@@ -11,6 +13,7 @@ import Modal from './components/Modal';
  */
 function App() {
   const { isBudgetValid } = useContext(BudgetContext);
+  const { dispatch, TYPE } = useContext(ExpensesContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalAnimation, setModalAnimation] = useState(false);
 
@@ -22,6 +25,19 @@ function App() {
 
     setTimeout(() => {
       setModalAnimation(true);
+    }, 500);
+  };
+
+  const saveExpenses = (newExpenses) => {
+    dispatch({
+      type: TYPE.ADD,
+      payload: { id: getRandomId(), ...newExpenses },
+    });
+
+    setIsModalOpen(false);
+
+    setTimeout(() => {
+      setModalAnimation(false);
     }, 500);
   };
 
@@ -43,6 +59,7 @@ function App() {
           setIsModalOpen={setIsModalOpen}
           setModalAnimation={setModalAnimation}
           modalAnimation={modalAnimation}
+          saveExpenses={saveExpenses}
         />
       )}
     </div>
