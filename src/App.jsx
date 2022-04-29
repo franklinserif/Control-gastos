@@ -14,7 +14,7 @@ import Modal from './components/Modal';
  */
 function App() {
   const { isBudgetValid } = useContext(BudgetContext);
-  const { dispatch, TYPE } = useContext(ExpensesContext);
+  const { expenses, dispatch, TYPE } = useContext(ExpensesContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalAnimation, setModalAnimation] = useState(false);
 
@@ -52,7 +52,7 @@ function App() {
       {isBudgetValid && (
         <>
           <main>
-            <ExpensesList />
+            <ExpensesList expenses={expenses} />
           </main>
           <button className="nuevo-gasto" onClick={handleNewExpense}>
             <img src={IconNewExpense} alt="Icono nuevo gasto" />
