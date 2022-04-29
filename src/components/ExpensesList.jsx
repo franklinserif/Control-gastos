@@ -1,9 +1,15 @@
-const ExpensesList = () => {
+import PropTypes from 'prop-types';
+
+const ExpensesList = ({ expenses }) => {
   return (
-    <div>
-      <p>Desde listado gastos</p>
+    <div className="listado-gastos contenedor">
+      {expenses.length ? 'Gastos' : 'No hay gastos aun'}
     </div>
   );
+};
+
+ExpensesList.propTypes = {
+  expenses: PropTypes.array,
 };
 
 export default ExpensesList;
