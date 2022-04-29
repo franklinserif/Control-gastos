@@ -4,7 +4,7 @@ import Expense from './Expense';
 const ExpensesList = ({ expenses }) => {
   return (
     <div className="listado-gastos contenedor">
-      {expenses?.length ? 'Gastos' : 'No hay gastos aun'}
+      <h2>{expenses?.length ? 'Gastos' : 'No hay gastos aun'}</h2>
 
       {expenses.map((expense) => (
         <Expense key={expense.id} expense={expense} />
