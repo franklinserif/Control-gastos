@@ -15,6 +15,7 @@ const Expense = ({ expense }) => {
           </div>
         </div>
       </div>
+      <p className="cantidad-gasto">${amount}</p>
     </div>
   );
 };
