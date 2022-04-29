@@ -12,12 +12,17 @@ import Modal from './components/Modal';
 function App() {
   const { isBudgetValid } = useContext(BudgetContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalAnimation, setModalAnimation] = useState(false);
 
   /**
    * it will handle the modal window
    */
   const handleNewExpense = () => {
-    setIsModalOpen((prevState) => !prevState);
+    setIsModalOpen(true);
+
+    setTimeout(() => {
+      setModalAnimation(true);
+    }, 500);
   };
 
   return (
@@ -33,7 +38,13 @@ function App() {
         </button>
       )}
 
-      {isModalOpen && <Modal setIsModalOpen={setIsModalOpen} />}
+      {isModalOpen && (
+        <Modal
+          setIsModalOpen={setIsModalOpen}
+          setModalAnimation={setModalAnimation}
+          modalAnimation={modalAnimation}
+        />
+      )}
     </div>
   );
 }
