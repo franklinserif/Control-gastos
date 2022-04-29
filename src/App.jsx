@@ -4,6 +4,7 @@ import { ExpensesContext } from './context/ExpensesProvider';
 import getRandomId from './Helpers/getRandomId';
 import IconNewExpense from './assets/img/nuevo-gasto.svg';
 import Header from './components/Header';
+import ExpensesList from './components/ExpensesList';
 import Modal from './components/Modal';
 
 /**
@@ -49,9 +50,14 @@ function App() {
        * and React will render div.nuevo-gastos element
        */}
       {isBudgetValid && (
-        <button className="nuevo-gasto" onClick={handleNewExpense}>
-          <img src={IconNewExpense} alt="Icono nuevo gasto" />
-        </button>
+        <>
+          <main>
+            <ExpensesList />
+          </main>
+          <button className="nuevo-gasto" onClick={handleNewExpense}>
+            <img src={IconNewExpense} alt="Icono nuevo gasto" />
+          </button>
+        </>
       )}
 
       {isModalOpen && (
