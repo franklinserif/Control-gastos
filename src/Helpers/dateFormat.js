@@ -8,10 +8,10 @@ export default function dateFormated(date = Date.now()) {
   const options = {
     year: 'numeric',
     month: 'long',
-    day: '2-digits',
+    day: '2-digit',
   };
 
-  const dateFormated = Date(date);
+  const dateFormated = new Date(date);
 
   return dateFormated.toLocaleDateString('es-Es', options);
 }
