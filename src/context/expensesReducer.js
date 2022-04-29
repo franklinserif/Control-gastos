@@ -15,7 +15,7 @@ export default function expensesReducer(state, action) {
   switch (type) {
     // will add a new expense object in the array (state)
     case TYPE.ADD: {
-      return [...state, payload];
+      return [...state, { ...payload, date: Date.now() }];
     }
     // will update one expense if is the same id
     case TYPE.UPDATE: {
