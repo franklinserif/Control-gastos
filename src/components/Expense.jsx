@@ -39,7 +39,7 @@ const iconDictionary = {
  * @returns
  */
 const Expense = ({ expense }) => {
-  const { setEditExpense } = useContext(ExpensesContext);
+  const { setEditExpense, dispatch, TYPE } = useContext(ExpensesContext);
   const { categories, name, amount, date } = expense;
 
   const leadingActions = () => (
@@ -49,7 +49,9 @@ const Expense = ({ expense }) => {
   );
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction onClick={() => console.log('eliminar')}>
+      <SwipeAction
+        onClick={() => dispatch({ type: TYPE.DELETE, payload: expense?.id })}
+      >
         Eliminar
       </SwipeAction>
     </TrailingActions>
