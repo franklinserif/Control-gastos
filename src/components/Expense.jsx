@@ -1,6 +1,23 @@
 import PropTypes from 'prop-types';
 import dateFormated from '../Helpers/dateFormat';
 
+import IconSaving from '../assets/img/icono_ahorro.svg';
+import IconHouse from '../assets/img/icono_casa.svg';
+import IconFood from '../assets/img/icono_comida.svg';
+import IconExpenses from '../assets/img/icono_gastos.svg';
+import IconHobby from '../assets/img/icono_ocio.svg';
+import IconHealth from '../assets/img/icono_salud.svg';
+import IconSupscriptions from '../assets/img/icono_suscripciones.svg';
+
+const iconDictionary = {
+  saving: IconSaving,
+  food: IconFood,
+  expenses: IconExpenses,
+  hobby: IconHobby,
+  health: IconHealth,
+  supscriptions: suscripciones,
+};
+
 const Expense = ({ expense }) => {
   const { categories, name, amount, date } = expense;
   return (
