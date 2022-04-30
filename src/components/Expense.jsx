@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { ExpensesContext } from '../context/ExpensesProvider';
 import PropTypes from 'prop-types';
 import dateFormated from '../Helpers/dateFormat';
 import {
@@ -37,11 +39,12 @@ const iconDictionary = {
  * @returns
  */
 const Expense = ({ expense }) => {
+  const { setEditExpense } = useContext(ExpensesContext);
   const { categories, name, amount, date } = expense;
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => console.log('Editar')}>Editar</SwipeAction>
+      <SwipeAction onClick={() => setEditExpense(expense)}>Editar</SwipeAction>
     </LeadingActions>
   );
   const trailingActions = () => (

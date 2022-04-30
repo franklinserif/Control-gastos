@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useState } from 'react';
 import PropTypes from 'prop-types';
 import expensesReducer, { TYPE } from './expensesReducer';
 
@@ -11,9 +11,12 @@ export const ExpensesContext = createContext();
  */
 const ExpensesProvider = ({ children }) => {
   const [expenses, dispatch] = useReducer(expensesReducer, []);
+  const [editExpense, setEditExpense] = useState({});
 
   return (
-    <ExpensesContext.Provider value={{ expenses, dispatch, TYPE }}>
+    <ExpensesContext.Provider
+      value={{ expenses, dispatch, TYPE, editExpense, setEditExpense }}
+    >
       {children}
     </ExpensesContext.Provider>
   );

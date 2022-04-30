@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { BudgetContext } from './context/BudgetProvider';
 import { ExpensesContext } from './context/ExpensesProvider';
 import getRandomId from './Helpers/getRandomId';
@@ -14,14 +14,26 @@ import Modal from './components/Modal';
  */
 function App() {
   const { isBudgetValid } = useContext(BudgetContext);
-  const { expenses, dispatch, TYPE } = useContext(ExpensesContext);
+  const { expenses, dispatch, TYPE, editExpense, setEditExpense } =
+    useContext(ExpensesContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalAnimation, setModalAnimation] = useState(false);
+
+  useEffect(() => {
+    if (Object.keys(editExpense).length > 0) {
+      setIsModalOpen(true);
+
+      setTimeout(() => {
+        setModalAnimation(true);
+      }, 500);
+    }
+  }, [editExpense]);
 
   /**
    * it will handle the modal window
    */
   const handleNewExpense = () => {
+    setEditExpense({});
     setIsModalOpen(true);
 
     setTimeout(() => {
@@ -29,11 +41,18 @@ function App() {
     }, 500);
   };
 
-  const saveExpenses = (newExpenses) => {
-    dispatch({
-      type: TYPE.ADD,
-      payload: { id: getRandomId(), ...newExpenses },
-    });
+  const saveExpenses = (newExpenses, id) => {
+    if (id) {
+      dispatch({
+        type: TYPE.UPDATE,
+        payload: { ...newExpenses, id },
+      });
+    } else {
+      dispatch({
+        type: TYPE.ADD,
+        payload: { id: getRandomId(), ...newExpenses },
+      });
+    }
 
     setIsModalOpen(false);
 
@@ -66,6 +85,7 @@ function App() {
           setModalAnimation={setModalAnimation}
           modalAnimation={modalAnimation}
           saveExpenses={saveExpenses}
+          editExpense={editExpense}
         />
       )}
     </div>

@@ -12,14 +12,24 @@ const Modal = ({
   setModalAnimation,
   modalAnimation,
   saveExpenses,
+  editExpense,
 }) => {
   const [formState, setFormState] = useState({
     name: '',
     amount: '',
     categories: '',
   });
+  const [id, setId] = useState('');
 
   const [message, setMessage] = useState('');
+
+  useEffect(() => {
+    if (Object.keys(editExpense).length > 0) {
+      setFormState(editExpense);
+      setId(editExpense.id);
+    }
+  }, [editExpense]);
+
   /**
    * It will set all modal state to false
    * it will wait 500ms to clase the modal this
@@ -68,6 +78,7 @@ const Modal = ({
      * when the user submit the form
      */
     event.preventDefault();
+
     if (Object.values(formState).includes('')) {
       setMessage('Todos los campos son obligatorios');
       setTimeout(() => {
@@ -76,7 +87,7 @@ const Modal = ({
       return;
     }
 
-    saveExpenses(formState);
+    saveExpenses(formState, id);
   };
 
   return (
@@ -93,7 +104,7 @@ const Modal = ({
         className={`formulario ${modalAnimation ? 'animar' : 'cerrar'}`}
         onSubmit={handleSubmit}
       >
-        <legend>Nuevo Gasto</legend>
+        <legend>{editExpense?.name ? 'Editar gasto' : 'Nuevo Gasto'}</legend>
 
         {message && <Message type="error">{message}</Message>}
 
@@ -139,7 +150,10 @@ const Modal = ({
           </select>
         </div>
 
-        <input type="submit" value="Añadir Gasto" />
+        <input
+          type="submit"
+          value={editExpense?.name ? 'Editar Gasto' : 'Añadir Gasto'}
+        />
       </form>
     </div>
   );
@@ -150,6 +164,7 @@ Modal.propTypes = {
   setModalAnimation: PropTypes.func.isRequired,
   modalAnimation: PropTypes.bool.isRequired,
   saveExpenses: PropTypes.func.isRequired,
+  editExpense: PropTypes.object,
 };
 
 export default Modal;
