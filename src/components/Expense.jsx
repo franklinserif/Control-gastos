@@ -9,15 +9,24 @@ import IconHobby from '../assets/img/icono_ocio.svg';
 import IconHealth from '../assets/img/icono_salud.svg';
 import IconSupscriptions from '../assets/img/icono_suscripciones.svg';
 
+/**
+ * This is for better handling the icons for every category
+ */
 const iconDictionary = {
   saving: IconSaving,
   food: IconFood,
   expenses: IconExpenses,
   hobby: IconHobby,
   health: IconHealth,
-  supscriptions: suscripciones,
+  supscriptions: IconSupscriptions,
 };
 
+/**
+ *  it will return a div with all the expense detail
+ * @param {Object} props
+ * @param {Object} props.expense
+ * @returns
+ */
 const Expense = ({ expense }) => {
   const { categories, name, amount, date } = expense;
   return (
