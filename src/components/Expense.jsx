@@ -33,6 +33,7 @@ const Expense = ({ expense }) => {
   return (
     <div className="gasto sombra">
       <div className="contenido-gasto">
+        <img src={iconDictionary[categories]} alt={'icon ' + categories} />
         <div className="descripcion-gasto">
           <p className="categoria">{categories}</p>
           <p className="nombre-gasto">{name}</p>

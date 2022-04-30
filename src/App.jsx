@@ -43,7 +43,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={isModalOpen ? 'fijar' : ''}>
       <Header />
 
       {/** If the budget had a correct value, isBudget will be true
