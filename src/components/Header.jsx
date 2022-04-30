@@ -8,7 +8,7 @@ import BudgetControl from './BudgetControl';
  * @returns {JSX.Element} <Header/>
  */
 const Header = () => {
-  const { isBudgetValid, budget } = useContext(BudgetContext);
+  const { isBudgetValid } = useContext(BudgetContext);
 
   return (
     <header>

@@ -1,5 +1,6 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { BudgetContext } from '../context/BudgetProvider';
+import { ExpensesContext } from '../context/ExpensesProvider';
 
 /**
  * BudgetControl components for render controls
@@ -8,6 +9,19 @@ import { BudgetContext } from '../context/BudgetProvider';
  */
 const BudgetControl = () => {
   const { budget } = useContext(BudgetContext);
+  const { expenses } = useContext(ExpensesContext);
+  const [available, setAvailable] = useState(0);
+  const [spent, setSpent] = useState(0);
+
+  useEffect(() => {
+    const totalSpent = expenses.reduce(
+      (total, expense) => Number(expense.amount) + total,
+      0
+    );
+    setSpent(totalSpent);
+
+    setAvailable(budget - totalSpent);
+  }, [expenses]);
 
   const formatBudget = (budget) => {
     return budget.toLocaleString('en-US', {
@@ -26,10 +40,10 @@ const BudgetControl = () => {
           <span>Presupuesto: </span> {formatBudget(budget)}
         </p>
         <p>
-          <span>Disponible: </span> {formatBudget(0)}
+          <span>Disponible: </span> {formatBudget(available)}
         </p>
         <p>
-          <span>Gastado: </span> {formatBudget(0)}
+          <span>Gastado: </span> {formatBudget(spent)}
         </p>
       </div>
     </div>
