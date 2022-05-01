@@ -4,14 +4,25 @@ import Expense from './Expense';
 const ExpensesList = ({ expenses, filter, expensesFiltered }) => {
   return (
     <div className="listado-gastos contenedor">
-      <h2>{expenses?.length ? 'Gastos' : 'No hay gastos aun'}</h2>
-      {filter
-        ? expensesFiltered.map((expense) => (
-            <Expense key={expense.id} expense={expense} />
-          ))
-        : expenses.map((expense) => (
+      {filter ? (
+        <>
+          <h2>
+            {expensesFiltered?.length
+              ? 'Gastos'
+              : 'No hay gastos en esta categoria'}
+          </h2>
+          {expensesFiltered.map((expense) => (
             <Expense key={expense.id} expense={expense} />
           ))}
+        </>
+      ) : (
+        <>
+          <h2>{expenses?.length ? 'Gastos' : 'No hay gastos aun'}</h2>
+          {expenses.map((expense) => (
+            <Expense key={expense.id} expense={expense} />
+          ))}
+        </>
+      )}
       {}
     </div>
   );
