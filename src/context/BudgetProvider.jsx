@@ -12,13 +12,19 @@ export const BudgetContext = createContext();
  * @returns {JSX.Element} <BudgetProvider></BudgetProvider>
  */
 const BudgetProvider = ({ children }) => {
-  const [budget, setBudget] = useState(
-    Number(JSON.parse(localStorage.getItem('budget'))) || 0
-  );
+  const [budget, setBudget] = useState();
   const [isBudgetValid, setIsBudgetValid] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('budget', budget);
+    const budgetLS = JSON.parse(localStorage.getItem('budget'));
+
+    if (budgetLS > 0) {
+      setIsBudgetValid(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('budget', JSON.stringify(budget));
   }, [budget]);
 
   return (
