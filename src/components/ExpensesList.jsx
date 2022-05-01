@@ -19,8 +19,8 @@ const ExpensesList = ({ expenses, filter, expensesFiltered }) => {
 
 ExpensesList.propTypes = {
   expenses: PropTypes.array,
-  filter: PropTypes.func.isRequired,
-  expensesFiltered: PropTypes.isRequired,
+  filter: PropTypes.string.isRequired,
+  expensesFiltered: PropTypes.array,
 };
 
 export default ExpensesList;
