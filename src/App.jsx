@@ -47,6 +47,8 @@ function App() {
         type: TYPE.UPDATE,
         payload: { ...newExpenses, id },
       });
+
+      setEditExpense({});
     } else {
       dispatch({
         type: TYPE.ADD,
@@ -86,6 +88,7 @@ function App() {
           modalAnimation={modalAnimation}
           saveExpenses={saveExpenses}
           editExpense={editExpense}
+          setEditExpense={setEditExpense}
         />
       )}
     </div>

@@ -13,6 +13,7 @@ const Modal = ({
   modalAnimation,
   saveExpenses,
   editExpense,
+  setEditExpense,
 }) => {
   const [formState, setFormState] = useState({
     name: '',
@@ -38,7 +39,7 @@ const Modal = ({
    */
   const handleHideModal = () => {
     setModalAnimation(false);
-
+    setEditExpense({});
     setTimeout(() => {
       setIsModalOpen(false);
     }, 500);
@@ -165,6 +166,7 @@ Modal.propTypes = {
   modalAnimation: PropTypes.bool.isRequired,
   saveExpenses: PropTypes.func.isRequired,
   editExpense: PropTypes.object,
+  setEditExpense: PropTypes.func.isRequired,
 };
 
 export default Modal;
