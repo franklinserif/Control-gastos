@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { BudgetContext } from '../context/BudgetProvider';
+import { ExpensesContext } from '../context/ExpensesProvider';
 import NewBudget from './NewBudget';
 import BudgetControl from './BudgetControl';
 
@@ -9,7 +10,6 @@ import BudgetControl from './BudgetControl';
  */
 const Header = () => {
   const { isBudgetValid } = useContext(BudgetContext);
-
   return (
     <header>
       <h1>Planificador de gastos</h1>
