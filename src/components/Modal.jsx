@@ -141,6 +141,7 @@ const Modal = ({
             value={formState.categories}
             onChange={handleFormChange}
           >
+            <option value="selection">--- Selecione ----</option>
             <option value="saving">Ahorro</option>
             <option value="food">Comida</option>
             <option value="house">Casa</option>

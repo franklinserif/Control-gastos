@@ -6,6 +6,7 @@ import IconNewExpense from './assets/img/nuevo-gasto.svg';
 import Header from './components/Header';
 import ExpensesList from './components/ExpensesList';
 import Modal from './components/Modal';
+import Filter from './components/Filter';
 
 /**
  * Componente App, here will
@@ -18,6 +19,8 @@ function App() {
     useContext(ExpensesContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalAnimation, setModalAnimation] = useState(false);
+  const [filter, setFilter] = useState('');
+  const [expensesFiltered, setExpensesFiltered] = useState([]);
 
   useEffect(() => {
     if (Object.keys(editExpense).length > 0) {
@@ -28,6 +31,14 @@ function App() {
       }, 500);
     }
   }, [editExpense]);
+
+  useEffect(() => {
+    const expensesFiltered = expenses.filter(
+      (expense) => expense.categories === filter
+    );
+
+    setExpensesFiltered(expensesFiltered);
+  }, [filter]);
 
   /**
    * it will handle the modal window
@@ -73,7 +84,12 @@ function App() {
       {isBudgetValid && (
         <>
           <main>
-            <ExpensesList expenses={expenses} />
+            <Filter filter={filter} setFilter={setFilter} />
+            <ExpensesList
+              expenses={expenses}
+              filter={filter}
+              expensesFiltered={expensesFiltered}
+            />
           </main>
           <button className="nuevo-gasto" onClick={handleNewExpense}>
             <img src={IconNewExpense} alt="Icono nuevo gasto" />
