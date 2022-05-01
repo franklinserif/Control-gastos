@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 /** It will contain and provide the Budget context
@@ -12,8 +12,14 @@ export const BudgetContext = createContext();
  * @returns {JSX.Element} <BudgetProvider></BudgetProvider>
  */
 const BudgetProvider = ({ children }) => {
-  const [budget, setBudget] = useState(0);
+  const [budget, setBudget] = useState(
+    Number(JSON.parse(localStorage.getItem('budget'))) || 0
+  );
   const [isBudgetValid, setIsBudgetValid] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('budget', budget);
+  }, [budget]);
 
   return (
     <BudgetContext.Provider
