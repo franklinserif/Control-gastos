@@ -103,8 +103,6 @@ function App() {
           setModalAnimation={setModalAnimation}
           modalAnimation={modalAnimation}
           saveExpenses={saveExpenses}
-          editExpense={editExpense}
-          setEditExpense={setEditExpense}
         />
       )}
     </div>

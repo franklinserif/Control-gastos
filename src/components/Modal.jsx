@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import IconCloseModal from '../assets/img/cerrar.svg';
 import Message from './Message';
+import { ExpensesContext } from '../context/ExpensesProvider';
 
 /**
  * Modal Window component
@@ -12,9 +13,8 @@ const Modal = ({
   setModalAnimation,
   modalAnimation,
   saveExpenses,
-  editExpense,
-  setEditExpense,
 }) => {
+  const { editExpense, setEditExpense } = useContext(ExpensesContext);
   const [formState, setFormState] = useState({
     name: '',
     amount: '',
@@ -166,8 +166,6 @@ Modal.propTypes = {
   setModalAnimation: PropTypes.func.isRequired,
   modalAnimation: PropTypes.bool.isRequired,
   saveExpenses: PropTypes.func.isRequired,
-  editExpense: PropTypes.object,
-  setEditExpense: PropTypes.func.isRequired,
 };
 
 export default Modal;
